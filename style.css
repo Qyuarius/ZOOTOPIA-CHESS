@@ -1,0 +1,274 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: skyblue;
+}
+.chessBoard {
+    display: flex;
+    flex-direction: column;
+    height: 80vmin;
+    width: 80vmin;
+    border: 10px solid brown;
+}
+
+.row {
+    width: 12,5%;
+    display: flex;
+    flex: 1;
+}
+
+.column {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.column.black {
+    background-color: #588157;
+}
+
+.column:not(.black) {
+    background-color: #a3b18a;
+}
+
+.chessBoard .column img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.chessBoard .column img.black {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+.overlay{
+    z-index: 1;
+    pointer-events: none;
+}
+
+.selected {
+    filter: brightness(1.1);
+    outline: 2px solid rgb(255, 255, 255);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    -webkit-filter: brightness(1.1);
+}
+
+.dragging.black{
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+.dragging {
+    opacity: 0.5;
+    z-index: 3;
+}
+
+.valid-move {
+    background-color: rgba(0, 255, 0, 0.3) !important;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+.valid-capture {
+    background-color: rgba(255, 0, 0, 0.3) !important;
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.timer {
+    font-family: "Pixelify Sans", monospace;
+    font-size: 80px;
+    margin: 0 20px;
+    color: #fff;
+    background-image: url(img/SpriteTrafficMid.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: white;
+}
+
+.board-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  filter: grayscale(0.7);
+}
+
+.game-result {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms ease, transform 240ms ease;
+  transform: scale(0.96);
+}
+
+.game-result.hidden {
+  visibility: hidden;
+}
+
+.game-result.show {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+.game-result .card {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 28px 36px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 36px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+              0 0 12px rgba(255, 255, 255, 0.05) inset;
+}
+
+.game-result .winner {
+  color: #ffd54f;
+  font-weight: 700;
+}
+
+.game-result .draw {
+  color: #b0bec5;
+  font-weight: 600;
+}
+
+.restart-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.restart-btn:hover {
+  background-color: #66bb6a;
+  transform: scale(1.05);
+}
+
+.overlay-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.overlay-box {
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+.overlay-box h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.restart-btn {
+  background: #222;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.restart-btn:hover {
+  background: #444;
+}
+
+#game-over-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 25, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#game-over-overlay div {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 60px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.6s ease-out;
+}
+
+#game-over-overlay h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+#game-over-overlay button {
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#game-over-overlay button:hover {
+  background: linear-gradient(135deg, #90e0ef, #00b4d8);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
