@@ -11,197 +11,217 @@
 </head>
 <body>
     <div class="timer" id="timer-white"></div>
-    <div class="chessBoard">
-        <!-- row-1 -->
-        <div class="row">
-            <div id="row-1-column-1" class="column">
-                <img src="../img/SpriteBentengChess.png" alt="" class="benteng white">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-            </div>
-            <div id="row-1-column-2" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-1-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-1-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-1-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-1-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-1-column-7" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-1-column-8" class="column black">
-                <img src="../img/SpriteBentengChess.png" alt="" class="benteng black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+
+    <div class="board-container">
+        <div class="rank-labels">
+        <span>a</span>
+        <span>b</span>
+        <span>c</span>
+        <span>d</span>
+        <span>e</span>
+        <span>f</span>
+        <span>g</span>
+        <span>h</span>
         </div>
 
-        <!-- row-2 -->
-        <div class="row">
-            <div id="row-2-column-1" class="column black">
-                <img src="../img/SpriteKudaChess.png" alt="" class="kuda white">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+        <div class="chessBoard">
+            <!-- row-1 -->
+            <div class="row">
+                <div id="row-1-column-1" class="column">
+                    <img src="../img/SpriteBentengChess.png" alt="" class="benteng white">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                </div>
+                <div id="row-1-column-2" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-1-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-1-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-1-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-1-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-1-column-7" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-1-column-8" class="column black">
+                    <img src="../img/SpriteBentengChess.png" alt="" class="benteng black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
             </div>
-            <div id="row-2-column-2" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
+
+            <!-- row-2 -->
+            <div class="row">
+                <div id="row-2-column-1" class="column black">
+                    <img src="../img/SpriteKudaChess.png" alt="" class="kuda white">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                </div>
+                <div id="row-2-column-2" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-2-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-2-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-2-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-2-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-2-column-7" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-2-column-8" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteKudaChess.png" alt="" class="kuda black">
+                </div>
             </div>
-            <div id="row-2-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-2-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-2-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-2-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-2-column-7" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
+
+            <!-- row-3 -->
+            <div class="row">
+                <div id="row-3-column-1" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum white">
+                </div>
+                <div id="row-3-column-2" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-3-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-3-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-3-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-3-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-3-column-7" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-3-column-8" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum black">
+                </div>
             </div>
-            <div id="row-2-column-8" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteKudaChess.png" alt="" class="kuda black">
+
+            <!-- row-4 -->
+            <div class="row">
+                <div id="row-4-column-1" class="column black">
+                    <img src="../img/SpriteRatuDomba.png" alt="" class="ratu white">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                </div>
+                <div id="row-4-column-2" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-4-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-4-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-4-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-4-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-4-column-7" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-4-column-8" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteRatuDomba.png" alt="" class="ratu black">
+                </div>
+            </div>
+
+            <!-- row-5 -->
+            <div class="row">
+                <div id="row-5-column-1" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteRajaSinga.png" alt="" class="raja white">
+                </div>
+                <div id="row-5-column-2" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-5-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-5-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-5-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-5-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-5-column-7" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-5-column-8" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteRajaSinga.png" alt="" class="raja black">
+                </div>
+            </div>
+
+            <!-- row-6 -->
+            <div class="row">
+                <div id="row-6-column-1" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum white">
+                </div>
+                <div id="row-6-column-2" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-6-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-6-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-6-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-6-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-6-column-7" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-6-column-8" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum black">
+                </div>
+            </div>
+
+            <!-- row-7 -->
+            <div class="row">
+                <div id="row-7-column-1" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteKudaChess.png" alt="" class="kuda white">
+                </div>
+                <div id="row-7-column-2" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-7-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-7-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-7-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-7-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-7-column-7" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-7-column-8" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteKudaChess.png" alt="" class="kuda black">
+                </div>
+            </div>
+
+            <!-- row-8 -->
+            <div class="row">
+                <div id="row-8-column-1" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteBentengChess.png" alt="" class="benteng white">
+                </div>
+                <div id="row-8-column-2" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion white">
+                </div>
+                <div id="row-8-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-8-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-8-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-8-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
+                <div id="row-8-column-7" class="column black">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpritePionChess.png" alt="" class="pion black">
+                </div>
+                <div id="row-8-column-8" class="column">
+                    <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
+                    <img src="../img/SpriteBentengChess.png" alt="" class="benteng black">
+                </div>
             </div>
         </div>
 
-        <!-- row-3 -->
-        <div class="row">
-            <div id="row-3-column-1" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum white">
-            </div>
-            <div id="row-3-column-2" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-3-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-3-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-3-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-3-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-3-column-7" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-3-column-8" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum black">
-            </div>
+        <div class="file-labels">
+            <span>1</span><span>2</span><span>3</span><span>4</span>
+            <span>5</span><span>6</span><span>7</span><span>8</span>
         </div>
 
-        <!-- row-4 -->
-        <div class="row">
-            <div id="row-4-column-1" class="column black">
-                <img src="../img/SpriteRatuDomba.png" alt="" class="ratu white">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-            </div>
-            <div id="row-4-column-2" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-4-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-4-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-4-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-4-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-4-column-7" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-4-column-8" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteRatuDomba.png" alt="" class="ratu black">
-            </div>
-        </div>
-
-        <!-- row-5 -->
-        <div class="row">
-            <div id="row-5-column-1" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteRajaSinga.png" alt="" class="raja white">
-            </div>
-            <div id="row-5-column-2" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-5-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-5-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-5-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-5-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-5-column-7" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-5-column-8" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteRajaSinga.png" alt="" class="raja black">
-            </div>
-        </div>
-
-        <!-- row-6 -->
-        <div class="row">
-            <div id="row-6-column-1" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum white">
-            </div>
-            <div id="row-6-column-2" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-6-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-6-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-6-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-6-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-6-column-7" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-6-column-8" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteCumCumChess.png" alt="" class="cumcum black">
-            </div>
-        </div>
-
-        <!-- row-7 -->
-        <div class="row">
-            <div id="row-7-column-1" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteKudaChess.png" alt="" class="kuda white">
-            </div>
-            <div id="row-7-column-2" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-7-column-3" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-7-column-4" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-7-column-5" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-7-column-6" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-7-column-7" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-7-column-8" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteKudaChess.png" alt="" class="kuda black">
-            </div>
-        </div>
-
-        <!-- row-8 -->
-        <div class="row">
-            <div id="row-8-column-1" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteBentengChess.png" alt="" class="benteng white">
-            </div>
-            <div id="row-8-column-2" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion white">
-            </div>
-            <div id="row-8-column-3" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-8-column-4" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-8-column-5" class="column black"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-8-column-6" class="column"><img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay"></div>
-            <div id="row-8-column-7" class="column black">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpritePionChess.png" alt="" class="pion black">
-            </div>
-            <div id="row-8-column-8" class="column">
-                <img src="../img/SpriteRumpurOverlay.png" alt="" class="overlay">
-                <img src="../img/SpriteBentengChess.png" alt="" class="benteng black">
-            </div>
-        </div>
     </div>
 
     <div class="timer" id="timer-black"></div>
@@ -213,6 +233,6 @@
         </div>
     </div>
     
-    <script src="coba.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
