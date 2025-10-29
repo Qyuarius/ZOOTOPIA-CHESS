@@ -37,6 +37,63 @@ function initGame() {
     startTimer();
 }
 
+//Setup Board
+function initializeBoard() {
+    const board = document.querySelector('.chessBoard');
+    board.innerHTML = "";
+    const files = 8;
+    const ranks = 8;
+    const setup = {
+        white: {
+            1: ["benteng", "kuda", "cumcum", "ratu", "raja", "cumcum", "kuda", "benteng"],
+            2: ["pion", "pion", "pion", "pion", "pion", "pion", "pion", "pion"]
+        },
+        black: {
+            8: ["benteng", "kuda", "cumcum", "ratu", "raja", "cumcum", "kuda", "benteng"],
+            7: ["pion", "pion", "pion", "pion", "pion", "pion", "pion", "pion"]
+        }
+    };
+
+    for (let r = 1; r <= ranks; r++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+        for (let c = 1; c <= files; c++) {
+            const col = document.createElement('div');
+            col.classList.add('column');
+            if ((r + c) % 2 === 0) col.classList.add('black');
+            col.id = `row-${r}-column-${c}`;
+
+            const overlay = document.createElement('img');
+            overlay.src = "../img/SpriteRumpurOverlay.png";
+            overlay.classList.add('overlay');
+            col.appendChild(overlay);
+
+            if (setup.white[c] && setup.white[c][r - 1]) {
+                const piece = document.createElement('img');
+                piece.src = `../img/Sprite${capitalize(setup.white[c][r - 1])}Chess.png`;
+                piece.classList.add(setup.white[c][r - 1], "white");
+                col.appendChild(piece);
+            }
+
+            if (setup.black[c] && setup.black[c][r - 1]) {
+                const piece = document.createElement('img');
+                piece.src = `../img/Sprite${capitalize(setup.black[c][r - 1])}Chess.png`;
+                piece.classList.add(setup.black[c][r - 1], "black");
+                col.appendChild(piece);
+            }
+
+            row.appendChild(col);
+        }
+        board.appendChild(row);
+    }
+    initGame();
+}
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
 // ============================
 //  SECTION 2: TIMER FUNCTIONS
 // ============================
