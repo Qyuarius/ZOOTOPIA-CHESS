@@ -12,6 +12,11 @@ let whiteTime = 600;
 let blackTime = 600;
 let timerInterval;
 
+let whiteKingMoved = false;
+let blackKingMoved = false;
+let whiteRookRightMoved = false;
+let blackRookRightMoved = false;
+
 const whiteTimer = document.getElementById('timer-white');
 const blackTimer = document.getElementById('timer-black');
 
@@ -167,28 +172,70 @@ function handleDrop(event) {
 
     const targetSquare = event.currentTarget;
     const targetSquareId = targetSquare.id;
-
     if (!validMoveSquares.includes(targetSquareId)) return;
 
-    const existingPiece = targetSquare.querySelector('img:not(.overlay)');
     const overlay = targetSquare.querySelector('.overlay');
     const pieceColor = draggedPiece.classList.contains('white') ? 'white' : 'black';
+    const fromSquare = draggedPiece.parentElement;
+    const startId = fromSquare.id;
+    const [_, sr, __, sc] = startId.split('-');
+    const [___, tr, ____, tc] = targetSquareId.split('-');
+    const startCol = parseInt(sc);
+    const targetCol = parseInt(tc);
 
-    // Capture logic
-    if (existingPiece) {
-        const targetPieceColor = existingPiece.classList.contains('white') ? 'white' : 'black';
-        if (targetPieceColor === pieceColor) return;
-        existingPiece.remove();
+    const existingPiece = targetSquare.querySelector('img:not(.overlay)');
+    if (existingPiece) existingPiece.remove();
+
+    // ---- MOVE PIECE ----
+    targetSquare.insertBefore(draggedPiece, overlay || null);
+
+    // ---- Rokade Pendek (Kedua warna arah sama: +row) ----
+    if (draggedPiece.classList.contains('raja')) {
+        const pieceColor = draggedPiece.classList.contains('white') ? 'white' : 'black';
+        const [_, sr, __, sc] = startId.split('-');
+        const [___, tr, ____, tc] = targetSquare.id.split('-');
+        const startRow = parseInt(sr);
+        const targetRow = parseInt(tr);
+        const col = parseInt(tc);
+
+        if (targetRow - startRow === 2) {
+            const rookSquare = document.getElementById(`row-${startRow + 3}-column-${col}`);
+            const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
+            const newRookSquare = document.getElementById(`row-${targetRow - 1}-column-${col}`);
+            if (rook && newRookSquare) {
+                rook.remove();
+                newRookSquare.insertBefore(rook, newRookSquare.querySelector('.overlay'));
+            }
+
+            if (pieceColor === 'white') {
+                whiteKingMoved = true;
+                whiteRookRightMoved = true;
+            } else {
+                blackKingMoved = true;
+                blackRookRightMoved = true;
+            }
+
+            console.log(`Rokade Pendek ${pieceColor.toUpperCase()} ✅`);
+        }
     }
 
-    // Move
-    draggedPiece.remove();
-    targetSquare.insertBefore(draggedPiece, overlay || null);
+    // ---- UPDATE FLAGS ----
+    if (draggedPiece.classList.contains('raja')) {
+        if (pieceColor === 'white') whiteKingMoved = true;
+        else blackKingMoved = true;
+    }
+    if (draggedPiece.classList.contains('benteng')) {
+        const squareId = targetSquare.id;
+        if (pieceColor === 'white' && squareId.includes('column-8')) whiteRookRightMoved = true;
+        if (pieceColor === 'black' && squareId.includes('column-1')) blackRookRightMoved = true;
+    }
+
+    // ---- CLEANUP ----
     draggedPiece.classList.remove('dragging');
     draggedPiece = null;
-
     clearHighlights();
     validMoveSquares = [];
+
     checkGameOver();
     switchTurn();
 }
@@ -269,6 +316,24 @@ function calculateValidMoves(piece, currentSquare, ignoreCheck = false) {
                         }
                     }
                 }
+            }
+
+            // ---- Rokade Pendek (kedua warna sama: raja row+2, benteng row+3 → row+1) ----
+            const between1 = document.getElementById(`row-${rowNum + 1}-column-${colNum}`);
+            const between2 = document.getElementById(`row-${rowNum + 2}-column-${colNum}`);
+            const rookSquare = document.getElementById(`row-${rowNum + 3}-column-${colNum}`);
+            const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
+
+            const enemyColor = pieceColor === 'white' ? 'black' : 'white';
+            if (
+                rook &&
+                !between1.querySelector('img:not(.overlay)') &&
+                !between2.querySelector('img:not(.overlay)') &&
+                !isSquareAttacked(rowNum, colNum, enemyColor) &&
+                !isSquareAttacked(rowNum + 1, colNum, enemyColor) &&
+                !isSquareAttacked(rowNum + 2, colNum, enemyColor)
+            ) {
+                validSquares.push(`row-${rowNum + 2}-column-${colNum}`);
             }
             break;
 
