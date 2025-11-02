@@ -189,7 +189,6 @@ function handleDrop(event) {
     // ---- MOVE PIECE ----
     targetSquare.insertBefore(draggedPiece, overlay || null);
 
-    // ---- Rokade Pendek (Kedua warna arah sama: +row) ----
     if (draggedPiece.classList.contains('raja')) {
         const pieceColor = draggedPiece.classList.contains('white') ? 'white' : 'black';
         const [_, sr, __, sc] = startId.split('-');
@@ -198,6 +197,7 @@ function handleDrop(event) {
         const targetRow = parseInt(tr);
         const col = parseInt(tc);
 
+        // ---- Rokade Pendek (row + 2, rook row + 3 → row + 1) ----
         if (targetRow - startRow === 2) {
             const rookSquare = document.getElementById(`row-${startRow + 3}-column-${col}`);
             const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
@@ -206,16 +206,27 @@ function handleDrop(event) {
                 rook.remove();
                 newRookSquare.insertBefore(rook, newRookSquare.querySelector('.overlay'));
             }
-
-            if (pieceColor === 'white') {
-                whiteKingMoved = true;
-                whiteRookRightMoved = true;
-            } else {
-                blackKingMoved = true;
-                blackRookRightMoved = true;
-            }
-
             console.log(`Rokade Pendek ${pieceColor.toUpperCase()} ✅`);
+        }
+
+        // ---- Rokade Panjang (row - 2, rook row - 4 → row - 1) ----
+        if (startRow - targetRow === 2) {
+            const rookSquare = document.getElementById(`row-${startRow - 4}-column-${col}`);
+            const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
+            const newRookSquare = document.getElementById(`row-${targetRow + 1}-column-${col}`);
+            if (rook && newRookSquare) {
+                rook.remove();
+                newRookSquare.insertBefore(rook, newRookSquare.querySelector('.overlay'));
+            }
+            console.log(`Rokade Panjang ${pieceColor.toUpperCase()} ✅`);
+        }
+
+        if (pieceColor === 'white') {
+            whiteKingMoved = true;
+            whiteRookRightMoved = true;
+        } else {
+            blackKingMoved = true;
+            blackRookRightMoved = true;
         }
     }
 
@@ -318,22 +329,44 @@ function calculateValidMoves(piece, currentSquare, ignoreCheck = false) {
                 }
             }
 
-            // ---- Rokade Pendek (kedua warna sama: raja row+2, benteng row+3 → row+1) ----
-            const between1 = document.getElementById(`row-${rowNum + 1}-column-${colNum}`);
-            const between2 = document.getElementById(`row-${rowNum + 2}-column-${colNum}`);
-            const rookSquare = document.getElementById(`row-${rowNum + 3}-column-${colNum}`);
-            const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
-
             const enemyColor = pieceColor === 'white' ? 'black' : 'white';
-            if (
-                rook &&
-                !between1.querySelector('img:not(.overlay)') &&
-                !between2.querySelector('img:not(.overlay)') &&
-                !isSquareAttacked(rowNum, colNum, enemyColor) &&
-                !isSquareAttacked(rowNum + 1, colNum, enemyColor) &&
-                !isSquareAttacked(rowNum + 2, colNum, enemyColor)
-            ) {
-                validSquares.push(`row-${rowNum + 2}-column-${colNum}`);
+
+            // ---- Rokade Pendek (row + 2, rook row + 3 → row + 1) ----
+            {
+                const between1 = document.getElementById(`row-${rowNum + 1}-column-${colNum}`);
+                const between2 = document.getElementById(`row-${rowNum + 2}-column-${colNum}`);
+                const rookSquare = document.getElementById(`row-${rowNum + 3}-column-${colNum}`);
+                const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
+                if (
+                    rook &&
+                    !between1.querySelector('img:not(.overlay)') &&
+                    !between2.querySelector('img:not(.overlay)') &&
+                    !isSquareAttacked(rowNum, colNum, enemyColor) &&
+                    !isSquareAttacked(rowNum + 1, colNum, enemyColor) &&
+                    !isSquareAttacked(rowNum + 2, colNum, enemyColor)
+                ) {
+                    validSquares.push(`row-${rowNum + 2}-column-${colNum}`);
+                }
+            }
+
+            // ---- Rokade Panjang (row - 2, rook row - 4 → row - 1) ----
+            {
+                const between1 = document.getElementById(`row-${rowNum - 1}-column-${colNum}`);
+                const between2 = document.getElementById(`row-${rowNum - 2}-column-${colNum}`);
+                const between3 = document.getElementById(`row-${rowNum - 3}-column-${colNum}`);
+                const rookSquare = document.getElementById(`row-${rowNum - 4}-column-${colNum}`);
+                const rook = rookSquare?.querySelector(`.benteng.${pieceColor}`);
+                if (
+                    rook &&
+                    !between1.querySelector('img:not(.overlay)') &&
+                    !between2.querySelector('img:not(.overlay)') &&
+                    !between3.querySelector('img:not(.overlay)') &&
+                    !isSquareAttacked(rowNum, colNum, enemyColor) &&
+                    !isSquareAttacked(rowNum - 1, colNum, enemyColor) &&
+                    !isSquareAttacked(rowNum - 2, colNum, enemyColor)
+                ) {
+                    validSquares.push(`row-${rowNum - 2}-column-${colNum}`);
+                }
             }
             break;
 
