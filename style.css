@@ -231,47 +231,66 @@ body{
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 25, 0.8);
-  backdrop-filter: blur(10px);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
+  animation: fadeIn 0.3s ease-out;
 }
 
-#game-over-overlay div {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 40px 60px;
+/* kotak utama (480x320) */
+#game-over-overlay .game-over-container {
+  width: 480px;
+  height: 320px;
+  background-image: url(img/SpriteTrafficMid.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* isi teks dan tombol (380x220) */
+#game-over-overlay .game-over-content {
+  width: 380px;
+  height: 220px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: #fff;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.6s ease-out;
-}
-
-#game-over-overlay h1 {
-  font-size: 2.5rem;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000;
 }
 
+/* tombol restart */
 #game-over-overlay button {
-  background: linear-gradient(135deg, #00b4d8, #0077b6);
-  border: none;
-  color: white;
-  padding: 12px 30px;
-  font-size: 1rem;
-  border-radius: 50px;
+  background: #000;
+  color: #fff;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.2rem;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 8px 28px;
+  margin-top: 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.25s ease;
 }
 
 #game-over-overlay button:hover {
-  background: linear-gradient(135deg, #90e0ef, #00b4d8);
+  background: #ffd54f;
+  color: #000;
+  box-shadow: 0 0 15px #ffd54f;
   transform: scale(1.05);
 }
 

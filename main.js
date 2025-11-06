@@ -39,6 +39,18 @@ function initGame() {
         square.addEventListener('drop', handleDrop);
     });
 
+    draggedPiece = null;
+    currentPlayer = "white";
+    validMoveSquares = [];
+    gameOver = false;
+
+    whiteTime = 600;
+    blackTime = 600;
+    updateTimers();
+
+    const overlay = document.getElementById("game-over-overlay");
+    if (overlay) overlay.remove();
+
     startTimer();
 }
 
@@ -106,24 +118,35 @@ function capitalize(str) {
 function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
+        if (gameOver) {
+            clearInterval(timerInterval);
+            return;
+        }
+
         if (currentPlayer === 'white') {
             whiteTime--;
             if (whiteTime <= 0) {
                 clearInterval(timerInterval);
-                alert('Black wins by timeout!');
+                gameOver = true;
+                showGameOverOverlay("Waktu habis! Hitam menang!");
+                disableBoard();
                 return;
             }
         } else {
             blackTime--;
             if (blackTime <= 0) {
                 clearInterval(timerInterval);
-                alert('White wins by timeout!');
+                gameOver = true;
+                showGameOverOverlay("Waktu habis! Putih menang!");
+                disableBoard();
                 return;
             }
         }
+
         updateTimers();
     }, 1000);
 }
+
 
 function updateTimers() {
     whiteTimer.textContent = formatTime(whiteTime);
@@ -465,11 +488,10 @@ function clearHighlights() {
 }
 
 function switchTurn() {
+    if (gameOver) return;
     currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
     updateTurnIndicator();
     startTimer();
-
-    setTimeout(() => evaluateGameState(), 100);
 }
 
 
@@ -653,24 +675,24 @@ function evaluateGameState() {
 
     // --- Checkmate
     if (whiteInCheck && whiteMoves === 0) {
-        showGameOverOverlay("🔥 Checkmate! Black wins!");
+        showGameOverOverlay("Checkmate! Black wins!");
         disableBoard();
         return "black-wins";
     }
     if (blackInCheck && blackMoves === 0) {
-        showGameOverOverlay("🔥 Checkmate! White wins!");
+        showGameOverOverlay("Checkmate! White wins!");
         disableBoard();
         return "white-wins";
     }
 
     // --- Stalemate (no moves but not in check)
     if (!whiteInCheck && whiteMoves === 0) {
-        showGameOverOverlay("😐 Stalemate! It's a draw.");
+        showGameOverOverlay("Stalemate! It's a draw.");
         disableBoard();
         return "draw";
     }
     if (!blackInCheck && blackMoves === 0) {
-        showGameOverOverlay("😐 Stalemate! It's a draw.");
+        showGameOverOverlay("Stalemate! It's a draw.");
         disableBoard();
         return "draw";
     }
@@ -785,9 +807,11 @@ function showGameOverOverlay(message) {
         overlay = document.createElement("div");
         overlay.id = "game-over-overlay";
         overlay.innerHTML = `
-            <div>
-                <h1 id="game-over-message">${message}</h1>
-                <button onclick="restartGame()">Restart Game</button>
+            <div class="game-over-container">
+                <div class="game-over-content">
+                    <h1 id="game-over-message">${message}</h1>
+                    <button onclick="restartGame()">Restart Game</button>
+                </div>
             </div>
         `;
         document.body.appendChild(overlay);
@@ -796,6 +820,7 @@ function showGameOverOverlay(message) {
         overlay.style.display = "flex";
     }
 }
+
 
 function restartGame() {
     const overlay = document.getElementById("game-over-overlay");
