@@ -81,20 +81,20 @@ function initializeBoard() {
             col.id = `row-${r}-column-${c}`;
 
             const overlay = document.createElement('img');
-            overlay.src = "../img/SpriteRumpurOverlay.png";
+            overlay.src = "img/SpriteRumpurOverlay.png";
             overlay.classList.add('overlay');
             col.appendChild(overlay);
 
             if (setup.white[c] && setup.white[c][r - 1]) {
                 const piece = document.createElement('img');
-                piece.src = `../img/Sprite${capitalize(setup.white[c][r - 1])}Chess.png`;
+                piece.src = `img/Sprite${capitalize(setup.white[c][r - 1])}Chess.png`;
                 piece.classList.add(setup.white[c][r - 1], "white");
                 col.appendChild(piece);
             }
 
             if (setup.black[c] && setup.black[c][r - 1]) {
                 const piece = document.createElement('img');
-                piece.src = `../img/Sprite${capitalize(setup.black[c][r - 1])}Chess.png`;
+                piece.src = `img/Sprite${capitalize(setup.black[c][r - 1])}Chess.png`;
                 piece.classList.add(setup.black[c][r - 1], "black");
                 col.appendChild(piece);
             }
